@@ -1,0 +1,203 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Contact Us</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Contact Us</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section py-6 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Info Sidebar -->
+            <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
+                <div class="bg-white p-4 p-sm-5 rounded-4 shadow-sm h-100">
+                    <h3 class="font-weight-bold text-dark mb-4">Contact Information</h3>
+                    <p class="text-muted mb-5">Have questions about our manufacturing capacities, product certifications, or custom structural blueprints? Reach out to us or drop a message, and our sales engineers will get back to you shortly.</p>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <span class="bg-primary-light text-primary rounded-3 p-3 me-3">
+                            <i class="fa-solid fa-location-dot fa-lg"></i>
+                        </span>
+                        <div>
+                            <h6 class="font-weight-bold text-dark mb-1">Office Address</h6>
+                            <p class="text-muted font-sm m-0">aasiwalo ki dhani bhatton ki gali jaitpura road jaipur rajasthan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <span class="bg-primary-light text-primary rounded-3 p-3 me-3">
+                            <i class="fa-solid fa-phone fa-lg"></i>
+                        </span>
+                        <div>
+                            <h6 class="font-weight-bold text-dark mb-1">Phone Numbers</h6>
+                            <p class="text-muted font-sm m-0">
+                                <a href="tel:+919929258781" class="text-decoration-none text-muted d-block">+91 99292 58781</a>
+                                <a href="tel:+919680711542" class="text-decoration-none text-muted d-block">+91 96807 11542</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-5">
+                        <span class="bg-primary-light text-primary rounded-3 p-3 me-3">
+                            <i class="fa-solid fa-envelope fa-lg"></i>
+                        </span>
+                        <div>
+                            <h6 class="font-weight-bold text-dark mb-1">Email Address</h6>
+                            <p class="text-muted font-sm m-0">
+                                <a href="mailto:info@govindamenterprises.com" class="text-decoration-none text-muted">info@govindamenterprises.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Button -->
+                    <div class="text-center pt-3 border-top">
+                        <p class="text-muted font-sm mb-3">Prefer text messaging?</p>
+                        <a href="https://wa.me/919680711542?text=Hello%20Govindam%20Enterprises" class="btn btn-success w-100 py-3 rounded-3 font-weight-bold d-flex align-items-center justify-content-center shadow-sm hover-scale" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp fa-xl me-2"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Card -->
+            <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="bg-white p-4 p-sm-5 rounded-4 shadow-sm">
+                    <h3 class="font-weight-bold text-dark mb-2">Send us a Message</h3>
+                    <p class="text-muted font-sm mb-4">Fill out the form below, and we will get back to you within 24 hours.</p>
+
+                    <!-- Contact Page Form (AJAX enabled) -->
+                    <form id="contactPageForm" method="POST" action="{% url 'contact' %}" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row g-3">
+                            <!-- Name -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Your Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-regular fa-user"></i></span>
+                                    {{ form.name }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-name"></div>
+                            </div>
+
+                            <!-- Company Name -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Company Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-building"></i></span>
+                                    {{ form.company_name }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-company_name"></div>
+                            </div>
+                            
+                            <!-- Mobile -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Mobile Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-phone"></i></span>
+                                    {{ form.phone }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-phone"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Business Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-envelope"></i></span>
+                                    {{ form.email }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-email"></div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Select Product Category</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-gears"></i></span>
+                                    {{ form.product }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-product"></div>
+                            </div>
+
+                            <!-- Quantity -->
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-semibold text-dark">Required Quantity</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-arrow-up-9-1"></i></span>
+                                    {{ form.quantity }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-quantity"></div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="col-12">
+                                <label class="form-label font-weight-semibold text-dark">Your Message</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-regular fa-comment-dots"></i></span>
+                                    {{ form.message }}
+                                </div>
+                                <div class="invalid-feedback text-start" id="error-contact-message"></div>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary w-100 py-3 rounded-3 font-weight-bold d-flex align-items-center justify-content-center mt-4 shadow-md transition-all">
+                            <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                            <span>Send B2B Message</span>
+                            <i class="fa-solid fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Map Embedding -->
+        <div class="row mt-5" data-aos="fade-up" data-aos-duration="1000">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-3 px-1 gap-2">
+                        <div>
+                            <h5 class="font-weight-bold text-dark m-0"><i class="fa-solid fa-location-dot text-primary me-2"></i> Factory Location Map</h5>
+                            <small class="text-muted">Govindam Enterprises - aasiwalo ki dhani bhatton ki gali jaitpura road jaipur rajasthan</small>
+                        </div>
+                        <a href="https://maps.google.com/maps?q=Govindam%20Enterprises%20aasiwalo%20ki%20dhani%20bhatton%20ki%20gali%20jaitpura%20road%20jaipur%20rajasthan" target="_blank" rel="noopener noreferrer" class="btn btn-primary rounded-pill px-3 py-2 font-weight-bold font-xs shadow-sm text-nowrap align-self-start align-self-md-auto">
+                            <i class="fa-solid fa-map-location-dot me-2"></i> Open in Google Maps
+                        </a>
+                    </div>
+                    <div class="rounded-3 overflow-hidden bg-light" style="height: 420px; min-height: 320px;">
+                        <iframe src="https://maps.google.com/maps?q=Govindam%20Enterprises%20aasiwalo%20ki%20dhani%20bhatton%20ki%20gali%20jaitpura%20road%20jaipur%20rajasthan&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom Marquee Announcement Section -->
+<section class="py-3 text-white overflow-hidden shadow-inner" style="background-color: #082140; border-top: 3px solid var(--secondary-color);">
+    <div class="container-fluid px-0">
+        <marquee behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();" class="text-white font-weight-semibold font-sm m-0">
+            <span class="me-5"><i class="fa-solid fa-industry text-warning me-2"></i><strong>Govindam Enterprises:</strong> Premier Manufacturer of Transmission Line Hardware & Structures</span>
+            <span class="me-5"><i class="fa-solid fa-location-dot text-warning me-2"></i><strong>Factory:</strong> aasiwalo ki dhani bhatton ki gali jaitpura road jaipur rajasthan</span>
+            <span class="me-5"><i class="fa-solid fa-phone text-warning me-2"></i><strong>Call Sales:</strong> +91 99292 58781 / +91 96807 11542</span>
+            <span class="me-5"><i class="fa-solid fa-envelope text-warning me-2"></i><strong>Email:</strong> info@govindamenterprises.com</span>
+            <span class="me-5"><i class="fa-solid fa-clock text-warning me-2"></i><strong>Working Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</span>
+            <span class="me-5"><i class="fa-solid fa-shield-halved text-warning me-2"></i><strong>Quality Assured:</strong> Tested & Government Approved Tower Cross Arms, Stay Sets & Clamps</span>
+        </marquee>
+    </div>
+</section>
+{% endblock %}

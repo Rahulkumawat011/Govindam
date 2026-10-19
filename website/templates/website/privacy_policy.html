@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+
+{% block title %}Privacy Policy - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white" style="background: linear-gradient(135deg, #0284C7 0%, #0369a1 100%);">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Privacy Policy</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Privacy Policy</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="py-6 bg-light">
+    <div class="container">
+        <div class="bg-white p-4 p-sm-5 rounded-4 shadow-sm text-muted">
+            <h2 class="font-weight-bold text-dark mb-4">1. Information We Collect</h2>
+            <p>We collect information you provide directly to us when requesting services or contacting us. This includes your name, mobile number, district, message details, and service choices.</p>
+            
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">2. How We Use Your Information</h2>
+            <p>We use the collected details to process your utility liaisoning requests, contact you with consultations or updates, and manage the official application submission with electricity departments on your behalf.</p>
+            
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">3. Information Sharing</h2>
+            <p>We do not sell or lease your personal information. Details are only shared with government electricity board departments (such as the State Bijli Board) to process your applications.</p>
+
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">4. Security</h2>
+            <p>We employ administrative and technical precautions (including SSL routing and CSRF checks) to protect your contact requests database logs.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Client Reviews & Testimonials - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white" style="background: linear-gradient(135deg, #0284C7 0%, #0369a1 100%);">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Customer Testimonials</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Testimonials</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="testimonials-page py-6 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            {% if testimonials_list %}
+                {% for testimonial in testimonials_list %}
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="{{ forloop.counter0 }}00">
+                    <div class="card testimonial-card border-0 shadow-sm rounded-4 p-4 text-start h-100 bg-white transition-all">
+                        <div class="rating-stars mb-3 text-warning">
+                            {% with ''|center:testimonial.rating as range %}
+                            {% for _ in range %}
+                                <i class="fa-solid fa-star"></i>
+                            {% endfor %}
+                            {% endwith %}
+                        </div>
+                        <p class="text-muted flex-grow-1 mb-4 italic">"{{ testimonial.review }}"</p>
+                        <div class="d-flex align-items-center border-top pt-3">
+                            <div class="testimonial-avatar me-3 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center font-weight-bold" style="width: 48px; height: 48px; background-color: #0284C7;">
+                                {% if testimonial.image %}
+                                    <img src="{{ testimonial.image.url }}" class="rounded-circle w-100 h-100 object-cover" alt="{{ testimonial.name }}">
+                                {% else %}
+                                    {{ testimonial.name|slice:":1" }}
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h6 class="font-weight-bold text-dark m-0">{{ testimonial.name }}</h6>
+                                <small class="text-muted font-xs">{{ testimonial.designation }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Testimonials Fallback Partial -->
+                <div class="col-12">
+                    <div class="row g-4">
+                        {% include "website/partials/fallback_testimonials.html" %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

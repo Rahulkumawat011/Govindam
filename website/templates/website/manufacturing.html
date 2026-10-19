@@ -1,0 +1,99 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Manufacturing Infrastructure & Process - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Manufacturing Infrastructure</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Manufacturing</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Manufacturing Detail Section -->
+<section class="py-6 bg-white">
+    <div class="container">
+        <!-- Plant Capability -->
+        <div class="row align-items-center g-5 mb-6">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                <span class="text-primary font-weight-bold tracking-wider text-uppercase font-sm d-block mb-2">Factory Floor Capacity</span>
+                <h2 class="display-5 font-weight-bold text-dark mb-4">Precision Engineering & Structural Fabrication</h2>
+                <p class="text-muted mb-4 lead">
+                    Our modern fabrication unit is built to manage large B2B steel volume orders for tower structures, stay assemblies, and custom electricity board fixtures.
+                </p>
+                <p class="text-muted mb-4 font-sm">
+                    We maintain state-of-the-art gantry plasma cutters, laser blankers, multi-axis shearing brakes, and high-penetration structural MIG welding sets. Every component is crafted by certified technical operators under rigorous dimensional tolerance assessments.
+                </p>
+                <div class="p-3 bg-light rounded-3 border border-warning d-flex align-items-center">
+                    <span class="text-warning me-3"><i class="fa-solid fa-industry fa-2x"></i></span>
+                    <div>
+                        <h6 class="font-weight-bold text-dark mb-0">High-Performance Hot Dip Galvanization</h6>
+                        <small class="text-muted">All fabricated steel is hot-dip galvanized matching IS 2629/4759 standards.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <img src="{% static 'images/hero_bg2.jpg' %}" alt="Structural Shearing Yard" class="img-fluid rounded-4 shadow-lg border border-light w-100">
+            </div>
+        </div>
+
+        <!-- Manufacturing Steps -->
+        <div class="py-5 border-top">
+            <div class="text-center mb-5">
+                <span class="text-primary font-weight-bold tracking-wider text-uppercase font-sm d-block mb-2">Step-by-step Flow</span>
+                <h3 class="display-6 font-weight-bold text-dark">Our Production Workflow</h3>
+            </div>
+            
+            <div class="row g-4">
+                {% for proc in processes %}
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ forloop.counter0 }}00">
+                    <div class="p-4 bg-light rounded-4 border h-100 transition-all hover-translate-y">
+                        <span class="display-6 font-weight-bold text-warning-light text-primary mb-3 d-block">{{ proc.step }}</span>
+                        <h5 class="font-weight-bold text-dark mb-2">{{ proc.title }}</h5>
+                        <p class="text-muted font-sm mb-0">{{ proc.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Machine Inventory Table -->
+        <div class="py-5 border-top mt-5">
+            <div class="text-center mb-5">
+                <span class="text-primary font-weight-bold tracking-wider text-uppercase font-sm d-block mb-2">Machines & Equipment</span>
+                <h3 class="display-6 font-weight-bold text-dark">Our Factory Machinery</h3>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle m-0 text-start">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="p-3 text-white">Machine Name</th>
+                                <th class="p-3 text-white">Production Range / Capacity</th>
+                                <th class="p-3 text-white">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for machine in machines %}
+                            <tr>
+                                <td class="p-3 font-weight-semibold text-dark">{{ machine.name }}</td>
+                                <td class="p-3 text-muted font-sm">{{ machine.capacity }}</td>
+                                <td class="p-3 text-dark font-weight-bold font-sm"><span class="badge bg-primary-light text-primary p-2">{{ machine.qty }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

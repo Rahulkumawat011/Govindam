@@ -1,0 +1,116 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}About Us - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">About Our Company</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">About Us</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Company Story Section -->
+<section class="about-story py-6 bg-light">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                <span class="text-primary font-weight-bold tracking-wider text-uppercase font-sm d-block mb-2">Our History</span>
+                <h2 class="display-6 font-weight-bold text-dark mb-4">Precision Metal Fabrication Since 2015</h2>
+                <p class="text-muted mb-3">
+                    Govindam Enterprises was founded with a dedicated focus on manufacturing high-strength steel hardware for overhead power transmission and distribution networks. Our journey began with basic metal press work and has evolved into a state-of-the-art gantry welding and CNC laser facility.
+                </p>
+                <p class="text-muted mb-4">
+                    Based in Jaipur, Rajasthan, we serve public sector electricity boards, solar grid developers, and industrial EPC contracting giants, delivering custom components matching precision blueprints.
+                </p>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-primary-light text-primary rounded-circle p-2 me-3"><i class="fa-solid fa-check"></i></span>
+                            <span class="font-weight-bold text-dark">ISO 9001:2015 Certified</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-primary-light text-primary rounded-circle p-2 me-3"><i class="fa-solid fa-check"></i></span>
+                            <span class="font-weight-bold text-dark">Govt. Approved Vendor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="bg-white p-4 rounded-4 shadow-sm border-start border-5 border-primary">
+                    <h3 class="font-weight-bold text-dark mb-3">Our Core Philosophy</h3>
+                    <div class="mb-4">
+                        <h6 class="text-primary font-weight-bold"><i class="fa-solid fa-bullseye me-2"></i> Mission</h6>
+                        <p class="text-muted font-sm m-0">To manufacture reliable, robust, and cost-effective transmission hardware using advanced fabrication technologies, ensuring energy connectivity with safety and speed.</p>
+                    </div>
+                    <div>
+                        <h6 class="text-primary font-weight-bold"><i class="fa-regular fa-eye me-2"></i> Vision</h6>
+                        <p class="text-muted font-sm m-0">To become the national standard for steel fabrication quality in the power sector, pioneering zero-defect manufacturing for next-generation green energy grids.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="timeline-section py-6 bg-white">
+    <div class="container">
+        <h2 class="display-5 font-weight-bold text-center text-dark mb-5" data-aos="fade-up" data-aos-duration="800">Our Growth Journey</h2>
+        
+        <div class="timeline-wrapper position-relative">
+            <div class="timeline-line position-absolute start-50 translate-middle-x bg-primary" style="width: 4px; top: 0; bottom: 0; opacity: 0.15;"></div>
+            
+            {% for event in timeline %}
+            <div class="row g-0 align-items-center mb-5 timeline-row position-relative">
+                <div class="col-md-6 {% if forloop.counter|divisibleby:2 %}order-md-2 text-md-start ps-md-5{% else %}text-md-end pe-md-5{% endif %}" data-aos="{% if forloop.counter|divisibleby:2 %}fade-left{% else %}fade-right{% endif %}" data-aos-duration="1000">
+                    <div class="bg-light p-4 rounded-4 shadow-xs border">
+                        <span class="badge bg-warning text-dark mb-2 px-3 py-1 font-weight-bold">{{ event.year }}</span>
+                        <h4 class="font-weight-bold text-dark mb-2">{{ event.title }}</h4>
+                        <p class="text-muted font-sm m-0">{{ event.description }}</p>
+                    </div>
+                </div>
+                <div class="timeline-dot bg-primary border border-white border-4 rounded-circle position-absolute start-50 translate-middle" style="width: 20px; height: 20px; z-index: 2;"></div>
+                <div class="col-md-6 {% if forloop.counter|divisibleby:2 %}order-md-1{% endif %}"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section py-6 bg-light">
+    <div class="container text-center">
+        <span class="text-primary font-weight-bold tracking-wider text-uppercase font-sm d-block mb-2">Our Leaders</span>
+        <h2 class="display-5 font-weight-bold text-dark mb-5" data-aos="fade-up" data-aos-duration="800">Meet the Management</h2>
+        
+        <div class="row g-4 justify-content-center">
+            {% for member in team %}
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white text-center h-100">
+                    <div class="bg-primary-light d-flex align-items-center justify-content-center text-primary py-5" style="height: 180px;">
+                        <i class="fa-solid fa-user-gear fa-5x"></i>
+                    </div>
+                    <div class="card-body p-4">
+                        <h5 class="font-weight-bold text-dark mb-1">{{ member.name }}</h5>
+                        <p class="text-primary font-weight-bold font-sm mb-3">{{ member.role }}</p>
+                        <hr class="my-3">
+                        <span class="badge bg-light text-muted border px-3 py-2 font-weight-bold"><i class="fa-regular fa-star text-warning me-2"></i> {{ member.experience }} Experience</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

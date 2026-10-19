@@ -1,0 +1,44 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="content-main">
+    <!-- Govindam Enterprises Quick Stats Dashboard -->
+    <div style="margin-bottom: 30px; font-family: 'Segoe UI', Arial, sans-serif;">
+        <h2 style="margin-bottom: 20px; font-weight: 600; color: #333;">Dashboard Overview</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <!-- Card 1 -->
+            <div style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 20px; border-left: 5px solid #d9534f; transition: transform 0.2s;">
+                <div style="font-size: 0.85rem; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 0.5px;">Pending Leads</div>
+                <div style="font-size: 2.2rem; font-weight: 700; color: #d9534f; margin-top: 10px;">{{ pending_requests }}</div>
+                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Awaiting response</div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 20px; border-left: 5px solid #0284C7; transition: transform 0.2s;">
+                <div style="font-size: 0.85rem; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 0.5px;">Total Requests</div>
+                <div style="font-size: 2.2rem; font-weight: 700; color: #0284C7; margin-top: 10px;">{{ total_requests }}</div>
+                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Total form submissions</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 20px; border-left: 5px solid #FFC107; transition: transform 0.2s;">
+                <div style="font-size: 0.85rem; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 0.5px;">Published Services</div>
+                <div style="font-size: 2.2rem; font-weight: 700; color: #333; margin-top: 10px;">{{ total_services }}</div>
+                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Available categories</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 20px; border-left: 5px solid #28a745; transition: transform 0.2s;">
+                <div style="font-size: 0.85rem; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 0.5px;">Doc downloads</div>
+                <div style="font-size: 2.2rem; font-weight: 700; color: #28a745; margin-top: 10px;">{{ total_documents }}</div>
+                <div style="font-size: 0.75rem; color: #888; margin-top: 5px;">Forms and templates</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Render the standard Django Admin index list -->
+    {{ block.super }}
+</div>
+{% endblock %}

@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Primary Tags -->
+    <title>{% block title %}Govindam Enterprises - Electrical Transmission & Distribution Hardware Manufacturer{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Govindam Enterprises is a leading manufacturer of electrical transmission and distribution line hardware. Manufacturing Tower Cross Arms, Stay Sets, Clamps, Brackets, Channels, and Custom steel fabrication.{% endblock %}">
+    <meta name="keywords" content="Govindam Enterprises, Tower Cross Arm, Cross Arm, Stay Set, Clamps, Brackets, MS Structures, Steel Fabrication, CNC Cutting, Laser Cutting, Transmission Line Hardware, India Manufacturer">
+    <meta name="author" content="Govindam Enterprises">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}Govindam Enterprises - Electrical Transmission Hardware Manufacturer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Sourcing high-quality Tower Cross Arms, Stay Sets, Clamps, Brackets, and custom structural steel fabrication products from Govindam Enterprises.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}{% endblock %}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="{% block twitter_title %}Govindam Enterprises - Electrical Transmission Hardware Manufacturer{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Leading manufacturer of electrical transmission and distribution line hardware, steel structures, and fabrication services.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}{% endblock %}">
+
+    <!-- JSON-LD LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ManufacturingBusiness",
+      "name": "Govindam Enterprises",
+      "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}",
+      "@id": "{{ request.scheme }}://{{ request.get_host }}/",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
+      "telephone": "+91 99292 58781",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "aasiwalo ki dhani bhatton ki gali jaitpura road",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "postalCode": "303012",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.9124,
+        "longitude": 75.7873
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/govindamenterprises",
+        "https://twitter.com/govindam_ent"
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS CDNs (Bootstrap 5, FontAwesome, AOS, Swiper) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=3.0">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Hidden Google Translate Element -->
+    <div id="google_translate_element" class="d-none"></div>
+
+    <!-- Top Contact Details Bar -->
+    <div class="top-contact-bar py-2 text-white" style="background-color: #082140; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div class="container-fluid px-lg-5 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center font-xs overflow-hidden me-3" style="flex: 1; min-width: 0;">
+                <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();" class="text-white m-0">
+                    <i class="fa-solid fa-bullhorn text-warning me-2"></i><strong>Welcome to Govindam Enterprises:</strong> Premier Manufacturer of Tower Cross Arms, Stay Sets, Clamps & Brackets &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa-solid fa-location-dot text-warning me-2"></i> <strong>Factory Address:</strong> aasiwalo ki dhani bhatton ki gali jaitpura road jaipur rajasthan
+                </marquee>
+            </div>
+            <div class="d-flex align-items-center gap-3 font-xs flex-shrink-0 ms-auto">
+                <a href="tel:+919929258781" class="text-white text-decoration-none"><i class="fa-solid fa-phone text-warning me-2"></i> +91 99292 58781</a>
+                <span class="text-white-50 d-none d-sm-inline">|</span>
+                <a href="tel:+919680711542" class="text-white text-decoration-none d-none d-sm-inline"><i class="fa-solid fa-phone text-warning me-2"></i> +91 96807 11542</a>
+                <span class="text-white-50 d-none d-sm-inline">|</span>
+                <!-- Language Toggle Button in Top Bar -->
+                <button type="button" class="btn btn-sm btn-outline-warning text-white rounded-pill px-3 py-1 font-xs font-weight-bold lang-toggle-btn d-flex align-items-center gap-1" onclick="toggleLanguage()" title="Switch Language / भाषा बदलें">
+                    <i class="fa-solid fa-globe text-warning"></i>
+                    <span class="lang-label">हिंदी</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm main-navbar">
+        <div class="container-fluid px-lg-5">
+            <a class="navbar-brand d-flex align-items-center py-0" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Govindam Enterprises Logo" style="height: 48px; max-height: 48px; width: auto; display: block;" class="brand-logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'products' %}active{% endif %}" href="{% url 'products' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'manufacturing' %}active{% endif %}" href="{% url 'manufacturing' %}">Manufacturing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'services' %}active{% endif %}" href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'gallery' %}active{% endif %}" href="{% url 'gallery' %}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'certificates' %}active{% endif %}" href="{% url 'certificates' %}">Certificates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if active_page == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-2 font-weight-bold lang-toggle-btn d-flex align-items-center gap-1" onclick="toggleLanguage()" title="Switch Language / भाषा बदलें">
+                        <i class="fa-solid fa-globe"></i>
+                        <span class="lang-label">हिंदी</span>
+                    </button>
+                    <a href="tel:+919929258781" class="btn btn-primary nav-call-btn d-flex align-items-center px-3 py-2 rounded-pill" style="white-space: nowrap; flex-shrink: 0;">
+                        <i class="fa-solid fa-phone me-2 animate-bounce"></i>
+                        <span style="white-space: nowrap;">+91 99292 58781</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-container">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919680711542?text=Hi%20Govindam%20Enterprises%2C%20I%20am%20interested%20in%20your%20manufacturing%20products." 
+           class="floating-btn whatsapp-btn shadow-lg d-flex align-items-center justify-content-center" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           title="Chat with us on WhatsApp">
+           <i class="fa-brands fa-whatsapp"></i>
+           <span class="floating-text">WhatsApp</span>
+        </a>
+        <!-- Call Now -->
+        <a href="tel:+919929258781" 
+           class="floating-btn call-btn shadow-lg d-flex align-items-center justify-content-center" 
+           title="Call Govindam Enterprises Now">
+           <i class="fa-solid fa-phone-volume"></i>
+           <span class="floating-text">Call Now</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <!-- Branding -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="mb-3">
+                        <img src="{% static 'images/logo.png' %}" alt="Govindam Enterprises Footer Logo" class="footer-logo-img bg-white p-2 rounded-3 shadow-sm">
+                    </div>
+                    <p class="text-muted pe-lg-4">Govindam Enterprises is a premier manufacturer of electrical transmission and distribution hardware. We deliver tested, government-approved Tower Cross Arms, Stay Sets, Clamps, and structural metal fittings to EPC contracting corporations across India.</p>
+                    <div class="d-flex gap-3 social-links mt-4">
+                        <a href="#" class="text-white bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="text-white bg-info rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-white bg-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h5 class="text-white mb-4 border-bottom border-warning pb-2 d-inline-block">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Home</a></li>
+                        <li class="mb-2"><a href="{% url 'about' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>About Us</a></li>
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Products</a></li>
+                        <li class="mb-2"><a href="{% url 'manufacturing' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Manufacturing</a></li>
+                        <li class="mb-2"><a href="{% url 'services' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Services</a></li>
+                        <li class="mb-2"><a href="{% url 'gallery' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Products Category Links -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h5 class="text-white mb-4 border-bottom border-warning pb-2 d-inline-block">B2B Products</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Tower Cross Arms</a></li>
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Stay Sets</a></li>
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Clamps & Brackets</a></li>
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>MS Structures</a></li>
+                        <li class="mb-2"><a href="{% url 'products' %}" class="text-muted text-decoration-none"><i class="fa-solid fa-chevron-right me-2 font-xs"></i>Steel Channels & Angles</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address / Contact -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <h5 class="text-white mb-4 border-bottom border-warning pb-2 d-inline-block">Get In Touch</h5>
+                    <ul class="list-unstyled text-muted contact-info">
+                        <li class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-location-dot text-warning me-3 mt-1"></i>
+                            <a href="https://maps.google.com/maps?q=Govindam%20Enterprises%20aasiwalo%20ki%20dhani%20bhatton%20ki%20gali%20jaitpura%20road%20jaipur%20rajasthan" target="_blank" rel="noopener noreferrer" class="text-muted text-decoration-none hover-warning">aasiwalo ki dhani bhatton ki gali jaitpura road jaipur rajasthan</a>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-phone text-warning me-3"></i>
+                            <div>
+                                <a href="tel:+919929258781" class="text-muted text-decoration-none d-block">+91 99292 58781</a>
+                                <a href="tel:+919680711542" class="text-muted text-decoration-none d-block">+91 96807 11542</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-envelope text-warning me-3"></i>
+                            <a href="mailto:info@govindamenterprises.com" class="text-muted text-decoration-none">info@govindamenterprises.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-secondary">
+
+            <!-- Copyright -->
+            <div class="row pt-2 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="m-0 text-muted">&copy; 2026 Govindam Enterprises. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="m-0 text-muted">Designed with <i class="fa-solid fa-heart text-danger"></i> for a Better Tomorrow. | <a href="{% url 'privacy_policy' %}" class="text-muted text-decoration-none hover-warning">Privacy Policy</a> | <a href="{% url 'terms' %}" class="text-muted text-decoration-none hover-warning">Terms of Service</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript CDNs (Bootstrap, AOS, Swiper, jQuery/AJAX) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom Main JS & Language Toggle JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/language_toggle.js' %}"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

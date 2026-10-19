@@ -1,0 +1,63 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Our Services - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Our Fabrication Services</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Services</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-grid py-6 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            {% if services_list %}
+                {% for service in services_list %}
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="{{ forloop.counter0 }}00">
+                    <div class="card service-item-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white text-start transition-all">
+                        <div class="service-img-wrap position-relative">
+                            {% if service.image %}
+                                <img src="{{ service.image.url }}" class="card-img-top service-card-img" alt="{{ service.title }}" style="height: 200px; object-fit: cover; width: 100%;">
+                            {% else %}
+                                <div class="bg-primary-light service-card-placeholder d-flex align-items-center justify-content-center text-primary" style="height: 200px;">
+                                    <i class="fa-solid {{ service.icon }} fa-4x"></i>
+                                </div>
+                            {% endif %}
+                            <div class="service-icon-floating bg-primary text-white rounded-3 shadow-md d-flex align-items-center justify-content-center position-absolute">
+                                <i class="fa-solid {{ service.icon }}"></i>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 pt-5">
+                            <h4 class="card-title font-weight-bold text-dark mb-3">{{ service.title }}</h4>
+                            <p class="card-text text-muted line-clamp-3 mb-4">{{ service.short_description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{% url 'service_detail' service.slug %}" class="btn btn-link text-primary font-weight-bold p-0 text-decoration-none d-inline-flex align-items-center hover-translate-x">
+                                    Learn More <i class="fa-solid fa-arrow-right ms-2 font-xs"></i>
+                                </a>
+                                <a href="{% url 'contact' %}?service={{ service.title|urlencode }}" class="btn btn-warning btn-sm text-dark font-weight-bold px-3 py-2 rounded-3">Get Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5">
+                    <span class="text-warning mb-3 d-block"><i class="fa-solid fa-circle-question fa-3x"></i></span>
+                    <h4 class="font-weight-bold text-dark">No Services Found</h4>
+                    <p class="text-muted">We currently have no services published. Please run database seeder.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

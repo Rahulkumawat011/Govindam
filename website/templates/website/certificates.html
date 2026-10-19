@@ -1,0 +1,92 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Company Certifications - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">ISO & Government Certifications</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Certificates</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Certificates Section -->
+<section class="py-6 bg-light">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <!-- Cert 1 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-stamp fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">GST Registration</h5>
+                    <p class="text-muted font-sm mb-4">Official Goods and Services Tax registration certificate issued by the Government of India.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-building-circle-check fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">MSME / UDYAM Certificate</h5>
+                    <p class="text-muted font-sm mb-4">Udyam Registration certificate recognizing Govindam Enterprises under Micro, Small & Medium Enterprises category.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-certificate fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">ISO 9001:2015 Certified</h5>
+                    <p class="text-muted font-sm mb-4">Quality Management System certification validating our engineering standards for structural steel fabrication.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-scroll fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">Factory License</h5>
+                    <p class="text-muted font-sm mb-4">Official factory operational consent certificate granted by state municipal and pollution control divisions.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-shield-halved fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">Safety Consent Report</h5>
+                    <p class="text-muted font-sm mb-4">Approved electrical safety audit certificate validating compliance with state electricity board requirements.</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download PDF</a>
+                </div>
+            </div>
+
+            <!-- Cert 6 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                <div class="card border-0 rounded-4 shadow-sm p-4 bg-white h-100 hover-translate-y">
+                    <span class="text-primary mb-3 d-block"><i class="fa-solid fa-file-pdf fa-4x"></i></span>
+                    <h5 class="font-weight-bold text-dark mb-2">Corporate Profile PDF</h5>
+                    <p class="text-muted font-sm mb-4">Detailed corporate catalog containing technical blueprints, machine inventory list, and credential sheets.</p>
+                    {% if profile_docs %}
+                        {% for doc in profile_docs %}
+                        <a href="{{ doc.pdf.url }}" class="btn btn-primary rounded-pill px-4 mt-auto font-xs font-weight-bold" download><i class="fa-solid fa-download me-2"></i>Download Catalog</a>
+                        {% endfor %}
+                    {% else %}
+                        <a href="#" class="btn btn-primary rounded-pill px-4 mt-auto font-xs font-weight-bold"><i class="fa-solid fa-download me-2"></i>Download Catalog</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

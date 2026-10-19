@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+
+{% block title %}Terms & Conditions - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white" style="background: linear-gradient(135deg, #0284C7 0%, #0369a1 100%);">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Terms of Service</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Terms of Service</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="py-6 bg-light">
+    <div class="container">
+        <div class="bg-white p-4 p-sm-5 rounded-4 shadow-sm text-muted">
+            <h2 class="font-weight-bold text-dark mb-4">1. Scope of Services</h2>
+            <p>Govindam Enterprises provides engineering contracting, grid path planning (Tawar Cross Farm), and document liaisoning with electricity boards. We act as independent private contractors and consultants.</p>
+            
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">2. User Responsibilities</h2>
+            <p>Users must submit authentic legal titles, ownership certificates, NOCs, and identity files when requesting name transfers or new electricity connections. We are not liable for files rejected due to counterfeit claims.</p>
+            
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">3. Government Charges & Service Fees</h2>
+            <p>Liaison projects involve official government fees paid to state departments. These are billed separately from our consultation and engineering charges. All state receipt logs are fully shared with clients.</p>
+
+            <h2 class="font-weight-bold text-dark mb-4 mt-5">4. Liability Limitation</h2>
+            <p>Grid connection approvals depend on state utility board review timelines and grid physical capacities. While we optimize document speed, we are not responsible for administrative grid scheduling delays.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

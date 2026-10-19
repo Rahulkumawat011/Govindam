@@ -1,0 +1,99 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Application Forms & Documents - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white" style="background: linear-gradient(135deg, #0284C7 0%, #0369a1 100%);">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">Official Forms & Documents</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Documents</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Document Portal Section -->
+<section class="document-portal py-6 bg-light">
+    <div class="container">
+        <!-- Search & Filter Controls -->
+        <div class="row g-4 mb-5" data-aos="fade-up" data-aos-duration="800">
+            <!-- Search bar -->
+            <div class="col-lg-6">
+                <form method="GET" action="{% url 'documents' %}" class="d-flex">
+                    <!-- Maintain category choice -->
+                    {% if selected_category %}
+                        <input type="hidden" name="category" value="{{ selected_category }}">
+                    {% endif %}
+                    <div class="input-group shadow-sm bg-white rounded-3 overflow-hidden">
+                        <span class="input-group-text bg-white border-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" name="q" class="form-control border-0 py-3" placeholder="Search forms by name (e.g. New Connection)..." value="{{ search_query }}">
+                        <button type="submit" class="btn btn-primary px-4" style="background-color: #0284C7; border-color: #0284C7;">Search</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Category dropdown filter -->
+            <div class="col-lg-6 text-lg-end">
+                <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+                    <a href="{% url 'documents' %}{% if search_query %}?q={{ search_query }}{% endif %}" 
+                       class="btn btn-pill {% if not selected_category %}btn-primary{% else %}btn-white border{% endif %} px-4 py-2 font-weight-semibold shadow-sm"
+                       style="border-radius: 50px; {% if not selected_category %}background-color: #0284C7; border-color: #0284C7;{% endif %}">
+                        All Documents
+                    </a>
+                    {% for cat_val, cat_name in categories %}
+                    <a href="{% url 'documents' %}?category={{ cat_val }}{% if search_query %}&q={{ search_query }}{% endif %}" 
+                       class="btn btn-pill {% if selected_category == cat_val %}btn-primary{% else %}btn-white border{% endif %} px-4 py-2 font-weight-semibold shadow-sm"
+                       style="border-radius: 50px; {% if selected_category == cat_val %}background-color: #0284C7; border-color: #0284C7;{% endif %}">
+                        {{ cat_name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Grid -->
+        <div class="row g-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            {% if documents_list %}
+                {% for doc in documents_list %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="card document-item-card h-100 shadow-sm border-0 rounded-4 p-4 bg-white transition-all">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="bg-danger-light text-danger rounded-3 p-3 me-3" style="background-color: #fcebeb; color: #dc3545;">
+                                <i class="fa-regular fa-file-pdf fa-2x"></i>
+                            </span>
+                            <div>
+                                <span class="badge bg-light text-muted font-xs border px-2 py-1 mb-1">{{ doc.get_category_display }}</span>
+                                <h5 class="card-title font-weight-bold text-dark m-0 line-clamp-2">{{ doc.title }}</h5>
+                            </div>
+                        </div>
+                        <p class="text-muted font-xs mb-4">Uploaded on: {{ doc.uploaded_at|date:"d M Y" }}</p>
+                        {% if doc.pdf %}
+                        <a href="{{ doc.pdf.url }}" class="btn btn-outline-primary w-100 py-2.5 rounded-3 font-weight-bold d-flex align-items-center justify-content-center hover-scale" download style="color: #0284C7; border-color: #0284C7;">
+                            <i class="fa-solid fa-download me-2"></i> Download PDF
+                        </a>
+                        {% else %}
+                        <a href="#" class="btn btn-outline-secondary w-100 py-2.5 rounded-3 font-weight-bold d-flex align-items-center justify-content-center disabled" style="pointer-events: none;">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i> File Unavailable
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <!-- Empty State Fallback -->
+                <div class="col-12 text-center py-5">
+                    <span class="text-muted bg-white p-4 rounded-circle d-inline-block mb-3 shadow-sm"><i class="fa-regular fa-folder-open fa-3x"></i></span>
+                    <h4 class="font-weight-bold text-dark mt-3">No Documents Found</h4>
+                    <p class="text-muted font-sm">We couldn't find any documents matching your criteria. Try widening your search queries.</p>
+                    <a href="{% url 'documents' %}" class="btn btn-primary px-4 py-2 mt-2 rounded-3" style="background-color: #0284C7; border-color: #0284C7;">Reset Filters</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

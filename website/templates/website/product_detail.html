@@ -1,0 +1,196 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}{{ product.title }} - Transmission Line Hardware - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">{{ product.title }}</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'products' %}" class="text-warning text-decoration-none">Products</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">{{ product.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Product Detail Section -->
+<section class="py-6 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Product Information -->
+            <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+                <div class="card border-0 shadow-sm rounded-4 p-4 p-sm-5 bg-white mb-4">
+                    <!-- Image -->
+                    <div class="product-detail-img-wrap rounded-4 overflow-hidden mb-4 border bg-light d-flex align-items-center justify-content-center" style="height: 380px;">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="img-fluid h-100 object-cover w-100" alt="{{ product.title }}">
+                        {% else %}
+                            <i class="fa-solid fa-gears fa-6x text-muted"></i>
+                        {% endif %}
+                    </div>
+
+                    <!-- Short Description -->
+                    <h3 class="font-weight-bold text-dark mb-3">Product Overview</h3>
+                    <p class="text-muted mb-4 lead font-sm">{{ product.short_description }}</p>
+
+                    <!-- Technical Specs Table -->
+                    <h4 class="font-weight-bold text-dark mb-3 pt-3"><i class="fa-solid fa-list-check text-primary me-2"></i>Technical Specifications</h4>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-striped table-bordered align-middle">
+                            <tbody>
+                                <tr>
+                                    <th class="bg-light text-dark font-xs w-35">Raw Material Standard</th>
+                                    <td class="font-sm">{{ product.material }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light text-dark font-xs w-35">Standard Dimensions</th>
+                                    <td class="font-sm">{{ product.dimensions }}</td>
+                                </tr>
+                                {% for key, val in specs_list %}
+                                <tr>
+                                    <th class="bg-light text-dark font-xs w-35">{{ key }}</th>
+                                    <td class="font-sm">{{ val }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Detailed Description -->
+                    <h4 class="font-weight-bold text-dark mb-3"><i class="fa-solid fa-circle-info text-primary me-2"></i>Product Description</h4>
+                    <p class="text-muted mb-4 font-sm">{{ product.detailed_description|linebreaksbr }}</p>
+
+                    <!-- Applications -->
+                    {% if apps_list %}
+                    <h4 class="font-weight-bold text-dark mb-3"><i class="fa-solid fa-bolt text-primary me-2"></i>Applications</h4>
+                    <ul class="list-unstyled text-muted font-sm mb-4">
+                        {% for app in apps_list %}
+                        <li class="d-flex align-items-start mb-2">
+                            <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                            <span>{{ app }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <!-- Drawing Download -->
+                    {% if product.pdf %}
+                    <div class="d-flex align-items-center p-3 rounded-3 bg-light border border-warning mt-4">
+                        <span class="text-danger me-3"><i class="fa-solid fa-file-pdf fa-3x"></i></span>
+                        <div class="flex-grow-1">
+                            <h6 class="font-weight-bold text-dark mb-0">Technical Drawing / Data Sheet</h6>
+                            <small class="text-muted">Download mechanical blueprint drawing PDF</small>
+                        </div>
+                        <a href="{{ product.pdf.url }}" class="btn btn-warning rounded-pill px-3 py-2 font-weight-bold font-xs" download>
+                            <i class="fa-solid fa-download me-2"></i>Download PDF
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- B2B Quote Inquiry Form Sidebar -->
+            <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="card border-0 shadow-sm rounded-4 p-4 p-sm-5 bg-white position-sticky" style="top: 100px;">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="bg-primary-light text-primary rounded-circle p-3 me-3">
+                            <i class="fa-solid fa-file-invoice-dollar fa-xl"></i>
+                        </span>
+                        <div>
+                            <h4 class="font-weight-bold text-dark mb-1">Request B2B Quote</h4>
+                            <small class="text-muted">Instant response from our sales engineers</small>
+                        </div>
+                    </div>
+
+                    <!-- AJAX Form -->
+                    <form id="heroRequestForm" method="POST" action="{% url 'home' %}" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-regular fa-user"></i></span>
+                                {{ form.name }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-name"></div>
+                        </div>
+
+                        <!-- Company Name -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Company Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-building"></i></span>
+                                {{ form.company_name }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-company_name"></div>
+                        </div>
+                        
+                        <!-- Mobile -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Mobile Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-phone"></i></span>
+                                {{ form.phone }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-phone"></div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Business Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-envelope"></i></span>
+                                {{ form.email }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-email"></div>
+                        </div>
+                        
+                        <!-- Product Select -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Select Product</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-gears"></i></span>
+                                {{ form.product }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-product"></div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="mb-3">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Quantity Required</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-solid fa-arrow-up-9-1"></i></span>
+                                {{ form.quantity }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-quantity"></div>
+                        </div>
+                        
+                        <!-- Message -->
+                        <div class="mb-4">
+                            <label class="form-label text-dark font-xs font-weight-semibold">Custom Specifications</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="fa-regular fa-comment-dots"></i></span>
+                                {{ form.message }}
+                            </div>
+                            <div class="invalid-feedback text-start" id="error-hero-message"></div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" id="heroSubmitBtn" class="btn btn-primary w-100 py-3 rounded-3 font-weight-bold d-flex align-items-center justify-content-center shadow-lg transition-all">
+                            <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                            <span>Send RFQ Quote</span>
+                            <i class="fa-solid fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

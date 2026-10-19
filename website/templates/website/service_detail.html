@@ -1,0 +1,112 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Service Details - {{ service.title }} - Govindam Enterprises{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5 text-white">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold" data-aos="fade-down" data-aos-duration="1000">{{ service.title }}</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center m-0">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-warning text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'services' %}" class="text-warning text-decoration-none">Services</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">{{ service.title }}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Service Detail Section -->
+<section class="service-detail py-6 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Left Details Column -->
+            <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1000">
+                <div class="bg-white rounded-4 shadow-sm p-4 p-sm-5 overflow-hidden">
+                    <!-- Service Image -->
+                    <div class="service-detail-img-wrap rounded-3 overflow-hidden mb-5">
+                        {% if service.image %}
+                            <img src="{{ service.image.url }}" class="img-fluid w-100 object-cover" alt="{{ service.title }}" style="max-height: 400px;">
+                        {% else %}
+                            <div class="bg-primary-light d-flex align-items-center justify-content-center text-primary" style="height: 350px;">
+                                <i class="fa-solid {{ service.icon }} fa-6x"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <h2 class="font-weight-bold text-dark mb-4">Service Description</h2>
+                    <div class="service-long-desc text-muted mb-5 leading-relaxed">
+                        {{ service.detailed_description|linebreaks }}
+                    </div>
+
+                    <!-- Benefits Section -->
+                    <h3 class="font-weight-bold text-dark mb-4">Key Benefits & Features</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success me-3"><i class="fa-solid fa-circle-check fa-lg"></i></span>
+                                <div>
+                                    <h6 class="font-weight-bold text-dark mb-1">Advanced CNC Laser Cutting</h6>
+                                    <p class="text-muted font-sm m-0">Extremely precise dimensional tolerances for B2B layouts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success me-3"><i class="fa-solid fa-circle-check fa-lg"></i></span>
+                                <div>
+                                    <h6 class="font-weight-bold text-dark mb-1">Automatic Weld Stations</h6>
+                                    <p class="text-muted font-sm m-0">Certified MIG welding ensures robust load-bearing joints.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success me-3"><i class="fa-solid fa-circle-check fa-lg"></i></span>
+                                <div>
+                                    <h6 class="font-weight-bold text-dark mb-1">Hot Dip Galvanizing</h6>
+                                    <p class="text-muted font-sm m-0">Complete pickling & zinc coating matches IS 2629 standards.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <span class="text-success me-3"><i class="fa-solid fa-circle-check fa-lg"></i></span>
+                                <div>
+                                    <h6 class="font-weight-bold text-dark mb-1">Fast Production Dispatch</h6>
+                                    <p class="text-muted font-sm m-0">High monthly output capacity yields on-time freight transit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar Column -->
+            <div class="col-lg-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <!-- Apply Card -->
+                <div class="bg-white p-4 rounded-4 shadow-sm border-top border-5 border-warning mb-4 text-center">
+                    <span class="text-primary font-weight-bold text-uppercase font-xs tracking-wider d-block mb-2">Ready to Proceed?</span>
+                    <h4 class="font-weight-bold text-dark mb-3">Apply for this Service</h4>
+                    <p class="text-muted font-sm mb-4">Click below to submit your details and request a custom quote for {{ service.title }}.</p>
+                    <a href="{% url 'contact' %}?service={{ service.title|urlencode }}" class="btn btn-primary btn-lg w-100 py-3 rounded-3 font-weight-bold shadow-md hover-scale">
+                        <i class="fa-regular fa-file-lines me-2"></i> Get Service Quote
+                    </a>
+                </div>
+
+                <!-- Contact Sidebar Card -->
+                <div class="bg-primary text-white p-4 rounded-4 shadow-sm text-center">
+                    <span class="text-warning font-weight-bold text-uppercase font-xs tracking-wider d-block mb-2">Need Help?</span>
+                    <h4 class="font-weight-bold text-white mb-3">Talk to our Experts</h4>
+                    <p class="text-white-50 font-sm mb-4">Call us directly to resolve any custom fabrication query.</p>
+                    <a href="tel:+919929258781" class="btn btn-warning text-dark font-weight-bold w-100 py-3 rounded-3 shadow-sm hover-scale">
+                        <i class="fa-solid fa-phone me-2"></i> +91 99292 58781
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
